@@ -1,0 +1,6 @@
+Upload image:
+<%= form_for @image, :html => { :multipart => true, method: :post } do |f| %>
+  <%= f.text_field :name, placeholder:'Please enter image name' %>
+  <%= f.file_field :image %>
+  <%= f.submit %>
+<% end %>

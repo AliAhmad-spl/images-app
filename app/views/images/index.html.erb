@@ -1,0 +1,9 @@
+<%= link_to 'Add new image', new_image_path %>
+
+<h1>Images#index</h1>
+<% @images.order("created_at DESC").each do |image| %>
+  <%= image&.name %>
+  <% if image.image.attached? %>
+    <image src="<%= url_for(image.image)%>" width='100px' height='100px' >
+  <% end %>
+<% end %>
