@@ -1,9 +1,43 @@
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+
 <%= link_to 'Add new image', new_image_path %>
 
 <h1>Images#index</h1>
-<% @images.order("created_at DESC").each do |image| %>
-  <%= image&.name %>
+<table class="table table-bordered">
+  <tr>
+    <th>Name</th>
+    <th>Image</th>
+    <th>Url</th>
+  </tr>
+  <% @images.order("created_at DESC").each do |image| %>
+  <tr>
+  <td><%= image&.name %></td>
+  <td>
   <% if image.image.attached? %>
     <image src="<%= url_for(image.image)%>" width='100px' height='100px' >
   <% end %>
+  </td>
+<td> <%= image.url %> </td>
+ </tr>
 <% end %>
+</table>
+
+
